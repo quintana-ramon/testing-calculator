@@ -347,4 +347,81 @@ describe("Ui Addition - Component", () => {
       expect(el.innerText).toContain("271.5");
     });
   });
+
+  // NOTE: SQUARE-ROOT #️⃣
+  describe("UI Square Root - Component", () => {
+    it("Should call square-root method", () => {
+      // Arrange
+      let result = 0;
+      component.operator1 = 25;
+
+      // Act
+      component.sqrt();
+      result = component.result;
+
+      // Assert
+      expect(result).toBe(5);
+    });
+
+    it("Should set operator1 model through ngModel", async () => {
+      // Arrange
+      await fixture.whenStable();
+      fixture.detectChanges();
+      const inputElement = fixture.debugElement.query(
+        By.css('input[name="operator1"]')
+      ).nativeElement;
+
+      // Act
+      inputElement.value = "823";
+      inputElement.dispatchEvent(new Event("input"));
+      fixture.detectChanges();
+
+      // Assert
+      expect(component.operator1).toEqual(823);
+    });
+
+    it("Should set operator2 model through ngModel", async () => {
+      // Arrange
+      await fixture.whenStable();
+      fixture.detectChanges();
+      const inputElement = fixture.debugElement.query(
+        By.css('input[name="operator2"]')
+      ).nativeElement;
+
+      // Act
+      inputElement.value = "619";
+      inputElement.dispatchEvent(new Event("input"));
+      fixture.detectChanges();
+
+      // Assert
+      expect(component.operator2).toEqual(619);
+    });
+
+    it("should add operator1 when i click the division button ", () => {
+      // Arrange
+      component.operator1 = 9;
+      let sqrtButton = fixture.debugElement.query(By.css(".sqrt-button"));
+
+      // Act
+      sqrtButton.triggerEventHandler("click", null);
+
+      // Assert
+      expect(component.result).toBe(3);
+    });
+
+    it("Should render square root in result div", () => {
+      // Arrange
+      component.operator1 = 81;
+
+      // Act
+      component.sqrt();
+      fixture.detectChanges();
+
+      let de = fixture.debugElement.query(By.css(".result"));
+      let el: HTMLElement = de.nativeElement;
+
+      // Assert
+      expect(el.innerText).toContain("9");
+    });
+  });
 });

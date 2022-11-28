@@ -3,6 +3,7 @@ import { addition } from "../addition/addition";
 import { substraction } from "../substraction/substraction";
 import { multiplication } from "../multiplication/multiplication";
 import { division } from "../division/division";
+import { sqrt } from "../sqrt/sqrt";
 
 @Component({
   selector: "app-ui",
@@ -39,6 +40,12 @@ export class UiComponent implements OnInit {
   division() {
     let myResult = 0;
     myResult = division(this.operator1, this.operator2);
-    this.result = myResult;
+    this.result = Math.round(myResult * 10000) / 10000;
+  }
+
+  sqrt() {
+    let myResult = 0;
+    myResult = sqrt(this.operator1);
+    this.result = Math.round(myResult * 10000) / 10000;
   }
 }
