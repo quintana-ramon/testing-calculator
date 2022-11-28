@@ -1,0 +1,10 @@
+.title-calculator {
+    align-content: center;
+    align-items: center;
+    width: 50rem;
+    font-size: 2.5rem;
+    color: white;
+    font-style: italic;
+    /*margin style*/
+    margin: 1rem 0 2.5rem 0;
+}
