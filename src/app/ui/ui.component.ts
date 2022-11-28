@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { addition } from "../addition/addition";
 import { substraction } from "../substraction/substraction";
 import { multiplication } from "../multiplication/multiplication";
+import { division } from "../division/division";
 
 @Component({
   selector: "app-ui",
@@ -33,5 +34,11 @@ export class UiComponent implements OnInit {
     let myResult = 0;
     myResult = multiplication(this.operator1, this.operator2);
     this.result = Math.round(myResult * 10000) / 10000;
+  }
+
+  division() {
+    let myResult = 0;
+    myResult = division(this.operator1, this.operator2);
+    this.result = myResult;
   }
 }
