@@ -4,6 +4,7 @@ import { substraction } from "../substraction/substraction";
 import { multiplication } from "../multiplication/multiplication";
 import { division } from "../division/division";
 import { sqrt } from "../sqrt/sqrt";
+import { exp } from "../exp/exp";
 
 @Component({
   selector: "app-ui",
@@ -46,6 +47,12 @@ export class UiComponent implements OnInit {
   sqrt() {
     let myResult = 0;
     myResult = sqrt(this.operator1);
+    this.result = Math.round(myResult * 10000) / 10000;
+  }
+
+  exp() {
+    let myResult = 0;
+    myResult = exp(this.operator1, this.operator2);
     this.result = Math.round(myResult * 10000) / 10000;
   }
 }
